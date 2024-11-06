@@ -1,0 +1,363 @@
+{
+    "system_data": {
+        "S_Base_MVA": "100"
+    },
+    "bus_data": {
+        "   1": {
+            "load_flow_type": "3",
+            "voltage_magnitude": "1.060 ",
+            "voltage_angle": "   0.0 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     0.0 ",
+            "reactive_load_MVAR": "     0.0  ",
+            "active_generation_MW": "  232.4 ",
+            "reactive_generation_MVAR": "  -16.9 "
+        },
+        "   2": {
+            "load_flow_type": "2",
+            "voltage_magnitude": "1.045 ",
+            "voltage_angle": " -4.98 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    21.7 ",
+            "reactive_load_MVAR": "    12.7  ",
+            "active_generation_MW": "   40.0 ",
+            "reactive_generation_MVAR": "   42.4 "
+        },
+        "   3": {
+            "load_flow_type": "2",
+            "voltage_magnitude": "1.010 ",
+            "voltage_angle": "-12.72 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    94.2 ",
+            "reactive_load_MVAR": "    19.0  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "   23.4 "
+        },
+        "   4": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.019 ",
+            "voltage_angle": "-10.33 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    47.8 ",
+            "reactive_load_MVAR": "    -3.9  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "   5": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.020 ",
+            "voltage_angle": " -8.78 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     7.6 ",
+            "reactive_load_MVAR": "     1.6  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "   6": {
+            "load_flow_type": "2",
+            "voltage_magnitude": "1.070 ",
+            "voltage_angle": "-14.22 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    11.2 ",
+            "reactive_load_MVAR": "     7.5  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "   12.2 "
+        },
+        "   7": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.062 ",
+            "voltage_angle": "-13.37 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     0.0 ",
+            "reactive_load_MVAR": "     0.0  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "   8": {
+            "load_flow_type": "2",
+            "voltage_magnitude": "1.090 ",
+            "voltage_angle": "-13.36 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     0.0 ",
+            "reactive_load_MVAR": "     0.0  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "   17.4 "
+        },
+        "   9": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.056 ",
+            "voltage_angle": "-14.94 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.19   ",
+            "active_load_MW": "    29.5 ",
+            "reactive_load_MVAR": "    16.6  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "  10": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.051 ",
+            "voltage_angle": "-15.10 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     9.0 ",
+            "reactive_load_MVAR": "     5.8  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "  11": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.057 ",
+            "voltage_angle": "-14.79 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     3.5 ",
+            "reactive_load_MVAR": "     1.8  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "  12": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.055 ",
+            "voltage_angle": "-15.07 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     6.1 ",
+            "reactive_load_MVAR": "     1.6  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "  13": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.050 ",
+            "voltage_angle": "-15.16 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    13.5 ",
+            "reactive_load_MVAR": "     5.8  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        },
+        "  14": {
+            "load_flow_type": "0",
+            "voltage_magnitude": "1.036 ",
+            "voltage_angle": "-16.04 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    14.9 ",
+            "reactive_load_MVAR": "     5.0  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        }
+    },
+    "branch_data": {
+        "0": {
+            "from_bus": "   1",
+            "to_bus": "   2",
+            "R_pu": "  0.01938 ",
+            "X_pu": "  0.05917  ",
+            "B_pu": "   0.0528 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "1": {
+            "from_bus": "   1",
+            "to_bus": "   5",
+            "R_pu": "  0.05403 ",
+            "X_pu": "  0.22304  ",
+            "B_pu": "   0.0492 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "2": {
+            "from_bus": "   2",
+            "to_bus": "   3",
+            "R_pu": "  0.04699 ",
+            "X_pu": "  0.19797  ",
+            "B_pu": "   0.0438 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "3": {
+            "from_bus": "   2",
+            "to_bus": "   4",
+            "R_pu": "  0.05811 ",
+            "X_pu": "  0.17632  ",
+            "B_pu": "   0.0340 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "4": {
+            "from_bus": "   2",
+            "to_bus": "   5",
+            "R_pu": "  0.05695 ",
+            "X_pu": "  0.17388  ",
+            "B_pu": "   0.0346 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "5": {
+            "from_bus": "   3",
+            "to_bus": "   4",
+            "R_pu": "  0.06701 ",
+            "X_pu": "  0.17103  ",
+            "B_pu": "   0.0128 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "6": {
+            "from_bus": "   4",
+            "to_bus": "   5",
+            "R_pu": "  0.01335 ",
+            "X_pu": "  0.04211  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "7": {
+            "from_bus": "   4",
+            "to_bus": "   7",
+            "R_pu": "  0.0     ",
+            "X_pu": "  0.20912  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.978 ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "8": {
+            "from_bus": "   4",
+            "to_bus": "   9",
+            "R_pu": "  0.0     ",
+            "X_pu": "  0.55618  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.969 ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "9": {
+            "from_bus": "   5",
+            "to_bus": "   6",
+            "R_pu": "  0.0     ",
+            "X_pu": "  0.25202  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.932 ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "10": {
+            "from_bus": "   6",
+            "to_bus": "  11",
+            "R_pu": "  0.09498 ",
+            "X_pu": "  0.19890  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "11": {
+            "from_bus": "   6",
+            "to_bus": "  12",
+            "R_pu": "  0.12291 ",
+            "X_pu": "  0.25581  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "12": {
+            "from_bus": "   6",
+            "to_bus": "  13",
+            "R_pu": "  0.06615 ",
+            "X_pu": "  0.13027  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "13": {
+            "from_bus": "   7",
+            "to_bus": "   8",
+            "R_pu": "  0.0     ",
+            "X_pu": "  0.17615  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "14": {
+            "from_bus": "   7",
+            "to_bus": "   9",
+            "R_pu": "  0.0     ",
+            "X_pu": "  0.11001  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "15": {
+            "from_bus": "   9",
+            "to_bus": "  10",
+            "R_pu": "  0.03181 ",
+            "X_pu": "  0.08450  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "16": {
+            "from_bus": "   9",
+            "to_bus": "  14",
+            "R_pu": "  0.12711 ",
+            "X_pu": "  0.27038  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "17": {
+            "from_bus": "  10",
+            "to_bus": "  11",
+            "R_pu": "  0.08205 ",
+            "X_pu": "  0.19207  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "18": {
+            "from_bus": "  12",
+            "to_bus": "  13",
+            "R_pu": "  0.22092 ",
+            "X_pu": "  0.19988  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "19": {
+            "from_bus": "  13",
+            "to_bus": "  14",
+            "R_pu": "  0.17093 ",
+            "X_pu": "  0.34802  ",
+            "B_pu": "   0.0    ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        }
+    }
+}

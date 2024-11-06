@@ -1,5 +1,5 @@
 import json
-from math import cos, sin, pi
+import math
 import numpy as np
 from scipy import sparse
 
@@ -37,7 +37,7 @@ def create_bus_admittance_matrix(filename):
             return 0, 0, 0, 0
         elif line_type == "4":  # Phase Shifter Transformer
             phase_shift_rad = np.deg2rad(float(line_info["phase_shift_degree"]))
-            phase_shift_complex = complex(cos(phase_shift_rad), sin(phase_shift_rad))
+            phase_shift_complex = complex(math.cos(phase_shift_rad), math.sin(phase_shift_rad))
             return (series_admittance,
                     -series_admittance / np.conjugate(phase_shift_complex),
                     -series_admittance / phase_shift_complex,

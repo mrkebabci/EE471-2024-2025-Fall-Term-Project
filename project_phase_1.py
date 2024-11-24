@@ -20,7 +20,7 @@ def create_bus_admittance_matrix(filename):
         X_pu = float(line_info["X_pu"])
         B_pu = float(line_info["B_pu"])
         series_admittance = 1 / complex(R_pu, X_pu)
-        shunt_admittance = 1j * B_pu / 2
+        shunt_admittance = 1j * B_pu /2
         line_type = line_info["type"]
 
         if line_type == "0":  # Transmission Line
@@ -61,3 +61,4 @@ def create_bus_admittance_matrix(filename):
 
     return sparse.csr_matrix(y_bus)
 
+out = create_bus_admittance_matrix("ieee14bus.json")

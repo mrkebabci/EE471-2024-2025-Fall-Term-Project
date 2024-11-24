@@ -5,7 +5,7 @@
     "bus_data": {
         "   1": {
             "load_flow_type": "3",
-            "voltage_magnitude": "1.060 ",
+            "voltage_magnitude": " 1.060 ",
             "voltage_angle": "   0.0 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -16,7 +16,7 @@
         },
         "   2": {
             "load_flow_type": "2",
-            "voltage_magnitude": "1.045 ",
+            "voltage_magnitude": " 1.045 ",
             "voltage_angle": " -4.98 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -27,7 +27,7 @@
         },
         "   3": {
             "load_flow_type": "2",
-            "voltage_magnitude": "1.010 ",
+            "voltage_magnitude": " 1.010 ",
             "voltage_angle": "-12.72 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -38,7 +38,7 @@
         },
         "   4": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.019 ",
+            "voltage_magnitude": " 1.019 ",
             "voltage_angle": "-10.33 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -49,7 +49,7 @@
         },
         "   5": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.020 ",
+            "voltage_magnitude": " 1.020 ",
             "voltage_angle": " -8.78 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -60,7 +60,7 @@
         },
         "   6": {
             "load_flow_type": "2",
-            "voltage_magnitude": "1.070 ",
+            "voltage_magnitude": " 1.070 ",
             "voltage_angle": "-14.22 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -71,7 +71,7 @@
         },
         "   7": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.062 ",
+            "voltage_magnitude": " 1.062 ",
             "voltage_angle": "-13.37 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -82,7 +82,7 @@
         },
         "   8": {
             "load_flow_type": "2",
-            "voltage_magnitude": "1.090 ",
+            "voltage_magnitude": " 1.090 ",
             "voltage_angle": "-13.36 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -93,7 +93,7 @@
         },
         "   9": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.056 ",
+            "voltage_magnitude": " 1.056 ",
             "voltage_angle": "-14.94 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.19   ",
@@ -104,7 +104,7 @@
         },
         "  10": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.051 ",
+            "voltage_magnitude": " 1.051 ",
             "voltage_angle": "-15.10 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -115,7 +115,7 @@
         },
         "  11": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.057 ",
+            "voltage_magnitude": " 1.057 ",
             "voltage_angle": "-14.79 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -126,7 +126,7 @@
         },
         "  12": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.055 ",
+            "voltage_magnitude": " 1.055 ",
             "voltage_angle": "-15.07 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -137,7 +137,7 @@
         },
         "  13": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.050 ",
+            "voltage_magnitude": " 1.050 ",
             "voltage_angle": "-15.16 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -148,7 +148,7 @@
         },
         "  14": {
             "load_flow_type": "0",
-            "voltage_magnitude": "1.036 ",
+            "voltage_magnitude": " 1.036 ",
             "voltage_angle": "-16.04 ",
             "G_pu": "  0.0   ",
             "B_pu": " 0.0    ",
@@ -235,7 +235,7 @@
             "R_pu": "  0.0     ",
             "X_pu": "  0.20912  ",
             "B_pu": "   0.0    ",
-            "type": "0",
+            "type": "2",
             "tap": "0.978 ",
             "phase_shift_degree": "   0.0 "
         },
@@ -245,7 +245,7 @@
             "R_pu": "  0.0     ",
             "X_pu": "  0.55618  ",
             "B_pu": "   0.0    ",
-            "type": "0",
+            "type": "2",
             "tap": "0.969 ",
             "phase_shift_degree": "   0.0 "
         },
@@ -255,7 +255,7 @@
             "R_pu": "  0.0     ",
             "X_pu": "  0.25202  ",
             "B_pu": "   0.0    ",
-            "type": "0",
+            "type": "2",
             "tap": "0.932 ",
             "phase_shift_degree": "   0.0 "
         },

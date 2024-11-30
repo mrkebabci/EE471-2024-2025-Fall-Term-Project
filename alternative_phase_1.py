@@ -56,5 +56,5 @@ def create_bus_admittance_matrix(filename):
         if G_pu != 0 or B_pu != 0:
             y_bus[bus_index, bus_index] += complex(G_pu, B_pu)
 
-    return sparse.csr_matrix(y_bus)
+    return sparse.lil_matrix(y_bus)
 

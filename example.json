@@ -1,0 +1,93 @@
+{
+    "system_data": {
+        "S_Base_MVA": "100"
+    },
+    "bus_data": {
+        "   1": {
+            "load_flow_type": "3",
+            "voltage_magnitude": " 1.060 ",
+            "voltage_angle": "   0.0 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "     0.0 ",
+            "reactive_load_MVAR": "     0.0  ",
+            "active_generation_MW": "  232.4 ",
+            "reactive_generation_MVAR": "  -16.9 "
+        },
+        "   2": {
+            "load_flow_type": "2",
+            "voltage_magnitude": " 1.045 ",
+            "voltage_angle": " -4.98 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    21.7 ",
+            "reactive_load_MVAR": "    12.7  ",
+            "active_generation_MW": "   40.0 ",
+            "reactive_generation_MVAR": "   42.4 "
+        },
+        "   3": {
+            "load_flow_type": "2",
+            "voltage_magnitude": " 1.010 ",
+            "voltage_angle": "-12.72 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.5    ",
+            "active_load_MW": "    94.2 ",
+            "reactive_load_MVAR": "    19.0  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "   23.4 "
+        },
+        "   4": {
+            "load_flow_type": "0",
+            "voltage_magnitude": " 1.019 ",
+            "voltage_angle": "-10.33 ",
+            "G_pu": "  0.0   ",
+            "B_pu": " 0.0    ",
+            "active_load_MW": "    47.8 ",
+            "reactive_load_MVAR": "    -3.9  ",
+            "active_generation_MW": "    0.0 ",
+            "reactive_generation_MVAR": "    0.0 "
+        }
+    },
+    "branch_data": {
+        "0": {
+            "from_bus": "   1",
+            "to_bus": "   2",
+            "R_pu": "  0.02 ",
+            "X_pu": "  0.06  ",
+            "B_pu": "   0.20 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "1": {
+            "from_bus": "   1",
+            "to_bus": "   3",
+            "R_pu": "  0.02 ",
+            "X_pu": "  0.06  ",
+            "B_pu": "   0.25 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "2": {
+            "from_bus": "   2",
+            "to_bus": "   3",
+            "R_pu": "  0.05 ",
+            "X_pu": "  0.10  ",
+            "B_pu": "   0 ",
+            "type": "0",
+            "tap": "0.0   ",
+            "phase_shift_degree": "   0.0 "
+        },
+        "3": {
+            "from_bus": "   2",
+            "to_bus": "   4",
+            "R_pu": "  0 ",
+            "X_pu": "  0.08  ",
+            "B_pu": "   0 ",
+            "type": "2",
+            "tap": "0.98   ",
+            "phase_shift_degree": "   0.0 "
+        }
+    }
+}

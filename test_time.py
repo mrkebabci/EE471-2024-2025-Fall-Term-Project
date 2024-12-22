@@ -1,6 +1,6 @@
 import timeit
 from alternative_phase_1 import create_bus_admittance_matrix as function1
-from project_phase_1 import create_bus_admittance_matrix as function2
+from create_bus_admittance_matrix import create_bus_admittance_matrix as function2
 
 filename = "ieee300bus.json"
 num_runs = 150

@@ -61,4 +61,4 @@ def create_bus_admittance_matrix(filename):
 
     return sparse.lil_matrix(y_bus)
 
-out = create_bus_admittance_matrix("ieee14bus.json")
+create_bus_admittance_matrix("ieee300bus.json")

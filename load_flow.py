@@ -87,7 +87,7 @@ def load_flow(filename):
             else:
                 print("Double Swing Detected")
 
-            v_variables.append(1)
+            v_variables.append(1.06)
             theta_variables.append(0)
 
         elif bus_type == "2": #pv bus
@@ -130,12 +130,6 @@ def load_flow(filename):
 
     f_x_minus_f_zero = [0] * (p_equation_count + q_equation_count)
 
-    #---- N-R Iteration Init ----
-
-    n_iterations = 2
-    tolerance = 10 ** -8
-
-
 
     #---- F(x) - Fx Equations ----
     def delta_F_x():
@@ -152,7 +146,6 @@ def load_flow(filename):
         Q_x = np.array(Q_x).reshape(-1, 1)
         return csc_array(P_x),csc_array(Q_x)
 
-    pi_x_minus_pi,qi_x_minus_qi = delta_F_x()
 
     #Extract Unknowns
     def extract_unkonwns(theta_variables,v_variables):
@@ -167,9 +160,6 @@ def load_flow(filename):
             x_k.append([v_variables[v_idx,0]])
 
         return csc_array(x_k)
-    x_k = extract_unkonwns(theta_variables,v_variables)
-    print(x_k)
-
 
     #Insert Unknowns
     def insert_unknowns(x_k,theta_variables,v_variables):
@@ -196,10 +186,7 @@ def load_flow(filename):
         v_variables = np.array(v_variables_list).reshape(-1, 1)
         v_variables = csc_array(v_variables)
         return theta_variables, v_variables
-    x_k =  csc_array([[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[0],[1.5],[2],[3],[4],[5],[6],[7],[8],[9]])
-    theta_variables,v_variables = insert_unknowns(x_k,theta_variables,v_variables)
-    print(theta_variables)
-    print(v_variables)
+
 
     ##---- Compute Jacobian ----
     def compute_jacobian():
@@ -265,8 +252,7 @@ def load_flow(filename):
         J_2 = hstack([J_21,J_22])
         jacobian = vstack([J_1, J_2])
         return jacobian
-    jacobian = compute_jacobian()
-    print(jacobian)
+
 
     #LU Factorization
     def sp_solver(jacobian, delta_Fx):
@@ -277,17 +263,54 @@ def load_flow(filename):
 
         return X_lil
 
-    #Compute Next Iteration
+    #---- N-R Iteration Init ----
+    n_max_iterations = 10
+    tolerance = 10 ** -4
 
+    #Initial F_(0)
+    pi_x_minus_pi,qi_x_minus_qi = delta_F_x()
+    F_delta_x = vstack([pi_x_minus_pi,qi_x_minus_qi])
+    print("F_delta_x")
+    print(F_delta_x)
 
+    for k in range(1,n_max_iterations+1):
+        print("Iteration Number : " + str(k))
+        jacobian = compute_jacobian()
+        print("jacobian")
+        print(jacobian)
 
+        x_k = extract_unkonwns(theta_variables, v_variables)
+        print("x_k")
+        print(x_k)
 
-    return pi_x_minus_pi, qi_x_minus_qi
+        delta_x_k = sp_solver(jacobian, F_delta_x)
+
+        x_k_p_1 = x_k + delta_x_k
+        print("x_k_p_1")
+        print(x_k_p_1)
+
+        theta_variables, v_variables = insert_unknowns(x_k_p_1, theta_variables, v_variables)
+        print("theta_variables")
+        print(theta_variables)
+        print("v_variables")
+        print(v_variables)
+
+        pi_x_minus_pi, qi_x_minus_qi = delta_F_x()
+        F_delta_x = vstack([pi_x_minus_pi, qi_x_minus_qi])
+        print("F_delta_x")
+        print(F_delta_x)
+        if np.all(np.abs(F_delta_x.data) < tolerance) == True:
+            print("System Converged After" + str(k) + "Iteration: " )
+            break
+        if k == n_max_iterations:
+            print("System Diverged After " + str(k) + " Iteration: " )
+
+    return theta_variables,v_variables
 
 
 a,b = load_flow("ieee14bus.json")
 print(a)
-print(b)
+# print(b)
 # print(b)
 # print(c)
 # print(d)

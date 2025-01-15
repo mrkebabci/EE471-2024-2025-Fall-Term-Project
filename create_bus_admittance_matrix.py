@@ -50,7 +50,7 @@ def create_bus_admittance_matrix(filename):
         y_bus[to_index, from_index] += y_ji
         y_bus[to_index, to_index] += y_jj
 
-    # add bus elements
+    # add bus shunt elements
     for bus_name, bus_info in data["bus_data"].items():
         bus_index = bus_name_to_index[bus_name]
         G_pu = float(bus_info["G_pu"])
@@ -60,5 +60,3 @@ def create_bus_admittance_matrix(filename):
             y_bus[bus_index, bus_index] += complex(G_pu, B_pu)
 
     return sparse.lil_matrix(y_bus)
-
-create_bus_admittance_matrix("ieee300bus.json")

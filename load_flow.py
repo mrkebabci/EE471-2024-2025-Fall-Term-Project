@@ -1,12 +1,13 @@
-from create_bus_admittance_matrix import create_bus_admittance_matrix
+from create_bus_admittance_matrix_solution import create_bus_admittance_matrix
 import json
 import numpy as np
 from scipy.sparse import lil_matrix, csc_array, csr_array, csr_matrix, vstack, hstack
 from scipy.sparse.linalg import spsolve
+from scipy.linalg import lu_factor, lu_solve
 
 
 
-def load_flow(filename):
+def load_flow(filename, maxIterations = 10, tolerance = 10**(-3),VisualFeedbackToConsole = False):
     #init
 
     y_bus = create_bus_admittance_matrix(filename)
@@ -67,6 +68,7 @@ def load_flow(filename):
     pv_bus_names_to_indexes = {}
     pq_bus_names_to_indexes = {}
     non_swing_bus_names_to_indexes = {}
+    all_bus_names_to_indexes = {}
 
     active_power_injections_pu = []
     reactive_power_injections_pu = []
@@ -81,23 +83,23 @@ def load_flow(filename):
     variable_index = 0
     for bus_name, bus_info in data["bus_data"].items():
         bus_type = bus_info["load_flow_type"]
-        if bus_type == "3": #swing bus
+        if int(bus_type) == 3: #swing bus
             if swing_bus_name_to_index == {}:
                 swing_bus_name_to_index.update({bus_name:variable_index})
             else:
                 print("Double Swing Detected")
 
-            v_variables.append(1.06)
+            v_variables.append(float(bus_info["voltage_magnitude"]))
             theta_variables.append(0)
 
-        elif bus_type == "2": #pv bus
+        elif int(bus_type) == 2: #pv bus
             v_variables.append(float(bus_info["voltage_magnitude"])) #scheduled power
             theta_variables.append(0) #flat start
             pv_bus_names_to_indexes.update({bus_name: variable_index})
             non_swing_bus_names_to_indexes.update({bus_name: variable_index})
             p_equation_count += 1
 
-        elif bus_type == "0" or bus_type == "1": #pq bus
+        elif int(bus_type) == 0 or int(bus_type) == 1 : #pq bus
             v_variables.append(1) #flat start
             theta_variables.append(0) #flat start
             pq_bus_names_to_indexes.update({bus_name: variable_index})
@@ -105,6 +107,7 @@ def load_flow(filename):
             p_equation_count += 1
             q_equation_count += 1
 
+        all_bus_names_to_indexes.update({bus_name: variable_index})
         active_power_injections_pu.append((float(bus_info["active_generation_MW"]) - float(bus_info["active_load_MW"])) / s_base)
         reactive_power_injections_pu.append((float(bus_info["reactive_generation_MVAR"]) - float(bus_info["reactive_load_MVAR"])) / s_base)
 
@@ -206,7 +209,7 @@ def load_flow(filename):
                     J_11[j_row_num,j_col_num] = v_variables[i, 0] * v_variables[j, 0] * (g_bus[i,j] * np.sin(theta_variables[i, 0] - theta_variables[j, 0]) - b_bus[i,j]* np.cos(theta_variables[i,0] - theta_variables[j,0]))
                 else:
                     J_11[j_row_num, j_col_num] = -1* Qi_x(i, v_variables, theta_variables, g_bus, b_bus)- b_bus[i,i] * v_variables[i, 0] * v_variables[j, 0]
-                    print("J11:" + str(i))
+                    # print("J11:" + str(i))
 
         #Jacobian 1_2
         for j_row_num in range(0,p_equation_count):
@@ -219,7 +222,7 @@ def load_flow(filename):
                     J_12[j_row_num,j_col_num] = v_variables[i, 0]* (g_bus[i,j]* np.cos(theta_variables[i, 0] - theta_variables[j, 0]) + b_bus[i,j]* np.sin(theta_variables[i, 0] - theta_variables[j, 0]))
                 else:
                     J_12[j_row_num, j_col_num] = (Pi_x(i, v_variables, theta_variables, g_bus, b_bus) /  v_variables[i, 0]) + g_bus[i,i] * v_variables[i, 0]
-                    print("J12:" + str(i))
+                    # print("J12:" + str(i))
 
         #Jacobian 2_1
         for j_row_num in range(0,q_equation_count):
@@ -232,7 +235,7 @@ def load_flow(filename):
                     J_21[j_row_num,j_col_num] = -1*v_variables[i, 0] * v_variables[j, 0] * (g_bus[i,j]* np.cos(theta_variables[i, 0] - theta_variables[j, 0]) + b_bus[i,j]* np.sin(theta_variables[i, 0] - theta_variables[j, 0]))
                 else:
                     J_21[j_row_num, j_col_num] = Pi_x(i, v_variables, theta_variables, g_bus, b_bus) - g_bus[i,i] * v_variables[i, 0] * v_variables[i, 0]
-                    print("J21:" + str(i))
+                    # print("J21:" + str(i))
 
         #Jacobian 2_2
         for j_row_num in range(0,q_equation_count):
@@ -245,7 +248,7 @@ def load_flow(filename):
                     J_22[j_row_num,j_col_num] = v_variables[i, 0] * (g_bus[i,j]* np.sin(theta_variables[i, 0] - theta_variables[j, 0]) - b_bus[i,j]* np.cos(theta_variables[i, 0] - theta_variables[j, 0]))
                 else:
                     J_22[j_row_num, j_col_num] = Qi_x(i, v_variables, theta_variables, g_bus, b_bus)/v_variables[i, 0] - b_bus[i,i] * v_variables[i, 0]
-                    print("J22:" + str(i))
+                    # print("J22:" + str(i))
 
 
         J_1 = hstack([J_11,J_12])
@@ -253,8 +256,7 @@ def load_flow(filename):
         jacobian = vstack([J_1, J_2])
         return jacobian
 
-
-    #LU Factorization
+        #SP Solver
     def sp_solver(jacobian, delta_Fx):
         jacobian_csc = jacobian.tocsc()
         delta_Fx_csc = (-1) * delta_Fx.toarray().flatten()
@@ -264,59 +266,66 @@ def load_flow(filename):
         return X_lil
 
     #---- N-R Iteration Init ----
-    n_max_iterations = 10
-    tolerance = 10 ** -4
-
     #Initial F_(0)
     pi_x_minus_pi,qi_x_minus_qi = delta_F_x()
     F_delta_x = vstack([pi_x_minus_pi,qi_x_minus_qi])
-    print("F_delta_x")
-    print(F_delta_x)
+    # print("F_delta_x")
+    # print(F_delta_x)
 
-    for k in range(1,n_max_iterations+1):
-        print("Iteration Number : " + str(k))
+    for k in range(1,maxIterations+1):
+        if VisualFeedbackToConsole == True:
+            print("Iteration Number : " + str(k))
         jacobian = compute_jacobian()
-        print("jacobian")
-        print(jacobian)
+        # print("jacobian")
+        # print(jacobian)
 
         x_k = extract_unkonwns(theta_variables, v_variables)
-        print("x_k")
-        print(x_k)
+        # print("x_k")
+        # print(x_k)
 
         delta_x_k = sp_solver(jacobian, F_delta_x)
 
         x_k_p_1 = x_k + delta_x_k
-        print("x_k_p_1")
-        print(x_k_p_1)
+        # print("x_k_p_1")
+        # print(x_k_p_1)
 
         theta_variables, v_variables = insert_unknowns(x_k_p_1, theta_variables, v_variables)
-        print("theta_variables")
-        print(theta_variables)
-        print("v_variables")
-        print(v_variables)
+        # print("theta_variables")
+        # print(theta_variables)
+        # print("v_variables")
+        # print(v_variables)
 
         pi_x_minus_pi, qi_x_minus_qi = delta_F_x()
         F_delta_x = vstack([pi_x_minus_pi, qi_x_minus_qi])
-        print("F_delta_x")
-        print(F_delta_x)
+        # print("F_delta_x")
+        # print(F_delta_x)
         if np.all(np.abs(F_delta_x.data) < tolerance) == True:
-            print("System Converged After" + str(k) + "Iteration: " )
+            if VisualFeedbackToConsole == True:
+                print(filename + " :" + "System Converged After " + str(k) + " Iteration: " )
             break
-        if k == n_max_iterations:
-            print("System Diverged After " + str(k) + " Iteration: " )
+        if( k == maxIterations) :
+             print(filename + " :" + "System Diverged After " + str(k) + " Iteration: " )
 
-    return theta_variables,v_variables
+    total_p_loss_pu = 0
+    total_q_loss_pu = 0
+    for i in range(0,len(all_bus_names_to_indexes)):
+        total_p_loss_pu = total_p_loss_pu + Pi_x(i,v_variables,theta_variables, g_bus,b_bus)
+        total_q_loss_pu = total_q_loss_pu + Qi_x(i,v_variables,theta_variables, g_bus,b_bus)
+    p_loss = total_p_loss_pu * s_base
+    q_loss = total_q_loss_pu * s_base
+
+    theta_variables = np.degrees(theta_variables.toarray())
+    voltage_angle = dict(zip(all_bus_names_to_indexes.keys(),theta_variables.flatten()))
+    voltage_magnitude = dict(zip(all_bus_names_to_indexes.keys(),v_variables.toarray().flatten()))
+    return voltage_magnitude,voltage_angle,p_loss,q_loss
 
 
-a,b = load_flow("ieee14bus.json")
-print(a)
-# print(b)
+# a,b,c,d = load_flow("ieee57bus.json",tolerance= 10**-3)
+# #
+# print(a)
 # print(b)
 # print(c)
 # print(d)
-# print(e)
-# print(f)
-# print(g)
 
 
 

@@ -96,7 +96,7 @@
             "voltage_magnitude": "1.056 ",
             "voltage_angle": "-14.94 ",
             "G_pu": "  0.0   ",
-            "B_pu": " 0.19   ",
+            "B_pu": " 0.0   ",
             "active_load_MW": "    29.5 ",
             "reactive_load_MVAR": "    16.6  ",
             "active_generation_MW": "    0.0 ",

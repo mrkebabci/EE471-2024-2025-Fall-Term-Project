@@ -250,7 +250,6 @@ def load_flow(filename, maxIterations = 10, tolerance = 10**(-3),VisualFeedbackT
                     J_22[j_row_num, j_col_num] = Qi_x(i, v_variables, theta_variables, g_bus, b_bus)/v_variables[i, 0] - b_bus[i,i] * v_variables[i, 0]
                     # print("J22:" + str(i))
 
-
         J_1 = hstack([J_11,J_12])
         J_2 = hstack([J_21,J_22])
         jacobian = vstack([J_1, J_2])
@@ -320,9 +319,9 @@ def load_flow(filename, maxIterations = 10, tolerance = 10**(-3),VisualFeedbackT
     return voltage_magnitude,voltage_angle,p_loss,q_loss
 
 
-# a,b,c,d = load_flow("ieee57bus.json",tolerance= 10**-3)
-# #
-# print(a)
+a,b,c,d = load_flow("ieee14bus.json",tolerance= 10**-3,VisualFeedbackToConsole= True)
+#
+print(a)
 # print(b)
 # print(c)
 # print(d)
